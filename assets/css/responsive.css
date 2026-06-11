@@ -24,10 +24,9 @@
   /* Hero */
   .hero {
     flex-direction: column-reverse;
-    gap: 2rem;
-    padding: 2.5rem 1rem;
+    gap: 1.5rem;
+    padding: 2rem 1rem 1.5rem;
     text-align: center;
-    min-height: auto;
   }
 
   .hero-content h1 {
