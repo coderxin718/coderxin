@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>千言 InfiniteChat — 张严鑫</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">张严鑫</a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于我</a></li>
+        <li><a href="projects.html" class="active">项目</a></li>
+        <li><a href="contact.html">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <article class="project-detail">
+      <div class="page-header">
+        <a href="projects.html" class="back-link">&larr; 返回项目列表</a>
+        <span class="detail-category">微服务 · 实时通信</span>
+        <h2>千言 InfiniteChat</h2>
+        <p>从零构建的实时聊天微服务平台，涵盖 IM 核心业务场景与分布式工程化实践。</p>
+      </div>
+
+      <section class="content-section">
+        <h3>项目概述</h3>
+        <p>千言（InfiniteChat）是一个功能完备的实时聊天应用后端，采用 <strong>Java 微服务架构</strong> 从零构建。项目涵盖了即时通讯（IM）的核心业务场景——单聊消息、群组聊天、朋友圈、红包、离线消息推送等，并在此基础上实现了分布式服务治理、异步消息队列、WebSocket 长连接管理等工程化实践。项目命名「千言」，取意「千言万语」。</p>
+
+        <h3>架构设计</h3>
+        <p>整个系统由 <strong>7 个独立微服务</strong> 组成，通过 Nacos 进行统一的服务注册与发现，Spring Cloud Gateway 作为唯一入口网关对外暴露 API。</p>
+
+        <div class="arch-layers">
+          <div class="arch-layer"><strong>GateWay</strong> (:10010) — 统一入口、路由转发、CORS、负载均衡</div>
+          <div class="arch-layer"><strong>AuthenticationService</strong> (:8082) — 短信验证码登录/注册、JWT 签发、头像上传</div>
+          <div class="arch-layer"><strong>RealTimeCommunicationService</strong> (:8083/:9000) — Netty WebSocket 长连接、心跳检测、ACK 确认、消息推送</div>
+          <div class="arch-layer"><strong>MessagingService</strong> (:8081) — 收发消息、会话管理、红包、Kafka 消息生产</div>
+          <div class="arch-layer"><strong>OfflineDataStoreService</strong> (:8085) — Kafka 消费、离线消息持久化与查询</div>
+          <div class="arch-layer"><strong>MomentService</strong> (:8086) — 朋友圈动态、点赞、评论、图片上传</div>
+          <div class="arch-layer"><strong>ContactService</strong> (:8084) — 好友管理、群组管理、用户搜索</div>
+        </div>
+
+        <h3>技术亮点</h3>
+
+        <h4>1. Netty 自定义 WebSocket 协议</h4>
+        <p>没有使用现成的 WebSocket 框架，而是基于 Netty 直接打造完整的实时通信层。Pipeline 设计：<code>IdleStateHandler → HttpServerCodec → ChunkedWriteHandler → HttpObjectAggregator → 自定义认证处理器 → WebSocket 协议处理器 → 业务消息处理器</code>。握手阶段从请求头提取并验证 JWT Token，非法连接直接拒绝。定义了 ACK 确认、心跳保活、消息推送等多种消息类型，5 分钟读超时自动断开僵尸连接。</p>
+
+        <h4>2. Kafka 异步解耦</h4>
+        <p>引入 Kafka 作为消息中间件，将消息的"实时推送"与"持久化存储"两个关注点分离：用户发送消息 → MessagingService 生产到 Kafka → Netty WebSocket 实时推送给在线用户，同时 OfflineDataStoreService 消费消息并持久化到 MySQL。这种设计降低了耦合度，也提升了系统的吞吐能力。</p>
+
+        <h4>3. 分布式精准推送</h4>
+        <p>当用户连接在某一台 Netty 实例上时，其他服务如何将消息准确推送？Redis 维护 <code>user:session:{userId}</code> 键存储用户当前连接的 Netty 服务器 IP，MessagingService 通过 DiscoveryClient 获取 Netty 服务实例列表，结合 Redis IP 信息直接向目标 Netty 实例发起 HTTP POST，由 Netty 实例完成最终的 WebSocket 推送。</p>
+
+        <h4>4. 多级防重复提交</h4>
+        <p>在红包等关键业务中，通过自定义 <code>@PreventDuplicateSubmit</code> 注解 + AOP 切面实现防重复提交，防止用户短时间内重复发起相同的请求，保证幂等性。</p>
+
+        <h3>核心功能</h3>
+        <ul class="feature-list">
+          <li><strong>认证体系</strong>：短信验证码登录/注册 + JWT 无状态认证 + 网关来源校验防绕过</li>
+          <li><strong>实时通信</strong>：Netty WebSocket 长连接 + 自定义协议 + 心跳保活 + ACK 确认送达</li>
+          <li><strong>消息业务</strong>：单聊/群聊、文本/图片/文件/视频/表情/红包多类型消息</li>
+          <li><strong>红包功能</strong>：发红包（随机金额分配）、抢红包、查询红包详情</li>
+          <li><strong>离线消息</strong>：Kafka 异步投递，用户上线后拉取未读消息</li>
+          <li><strong>社交功能</strong>：好友管理（增删/拉黑/申请）、群组管理（创建/踢人/退出）、朋友圈（图文/点赞/评论）</li>
+        </ul>
+
+        <h3>部署架构</h3>
+        <p>所有服务通过 Docker Compose 一键部署，内存分配从 512M 到 1024M（Netty 服务需更大内存）。基础设施依赖：Nacos（注册中心）、MySQL（业务存储）、Redis（缓存会话）、Kafka（异步消息）、MinIO（对象存储）。</p>
+
+        <div class="tech-stack">
+          <h3>技术栈</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">Spring Cloud Alibaba</span>
+            <span class="skill-tag">Nacos</span>
+            <span class="skill-tag">Netty</span>
+            <span class="skill-tag">WebSocket</span>
+            <span class="skill-tag">Kafka</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MyBatis-Plus</span>
+            <span class="skill-tag">JWT</span>
+            <span class="skill-tag">MinIO</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 张严鑫. All rights reserved.</p>
+  </footer>
+</body>
+</html>

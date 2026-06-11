@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系 — 张严鑫</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">张严鑫</a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于我</a></li>
+        <li><a href="projects.html">项目</a></li>
+        <li><a href="contact.html" class="active">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <h2>联系我</h2>
+      <p>对 AI 应用落地感兴趣？或者想聊聊技术、合作？发条消息，我看到后会尽快回复。</p>
+    </div>
+
+    <section class="content-section">
+      <div class="contact-grid">
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="name">姓名</label>
+            <input type="text" id="name" name="name" placeholder="你的名字" required autocomplete="name">
+            <span class="form-error" id="name-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">邮箱</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+            <span class="form-error" id="email-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="message">留言</label>
+            <textarea id="message" name="message" placeholder="说说你想聊什么 — 合作、技术问题、或者单纯打个招呼" required rows="5"></textarea>
+            <span class="form-error" id="message-error"></span>
+          </div>
+          <button type="submit" id="submit-btn" class="btn btn-primary">
+            <span class="btn-text">发送消息</span>
+            <span class="btn-spinner" hidden></span>
+          </button>
+          <div id="form-feedback" class="form-feedback" hidden></div>
+        </form>
+
+        <!-- <div class="contact-info">
+          <h3>也欢迎直接联系</h3>
+          <p>邮箱：2443852986@qq.com</p>
+          <p>电话：17838910932</p>
+          <p>24 岁 · 现居浙江</p>
+          <p>求职方向：AI 应用开发工程师</p>
+        </div> -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 张严鑫. All rights reserved.</p>
+  </footer>
+
+  <script src="js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目 — 张严鑫</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">张严鑫</a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于我</a></li>
+        <li><a href="projects.html" class="active">项目</a></li>
+        <li><a href="contact.html">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <h2>项目经历</h2>
+      <p>每一个项目都是我解决真实问题的尝试。点击卡片查看详情。</p>
+    </div>
+
+    <section class="content-section">
+      <div class="project-grid">
+
+        <a href="project-cloud-agri.html" class="project-link">
+          <article class="project-card">
+            <div class="project-thumb">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+              </svg>
+            </div>
+            <span class="project-category">AI·Agent</span>
+            <h3>云农智能体</h3>
+            <p>让 Agent 自己决定该查什么、怎么查。这是一个面向农业的智能问答系统，核心亮点是 ReAct Agent 多工具编排 + 向量/关键词混合检索 + 四道幻觉防线。用户拍一张叶片照片，系统自动完成从图像分析到诊断报告的完整推理链 — 带来源引用、可追溯。</p>
+          </article>
+        </a>
+
+        <a href="project-phenotype.html" class="project-link">
+          <article class="project-card">
+            <div class="project-thumb">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+              </svg>
+            </div>
+            <span class="project-category">计算机视觉·全栈</span>
+            <h3>植物表型智能分析平台</h3>
+            <p>用代码"看"懂作物。这个平台打通了从田间多模态数据采集（RGB/高光谱/LiDAR/热红外）到云端在线分析的完整链路：30+ 植被指数实时计算、YOLOv8 植株检测、LiDAR 点云三维重建、轻量化病害识别模型边缘部署。不只是 Demo — 已在实际的小麦和茶树试验中投入使用。</p>
+          </article>
+        </a>
+
+        <a href="project-im.html" class="project-link">
+          <article class="project-card">
+            <div class="project-thumb">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+              </svg>
+            </div>
+            <span class="project-category">微服务·实时通信</span>
+            <h3>千言 InfiniteChat</h3>
+            <p>从零手写一个 IM 系统是什么体验？7 个微服务、Netty 自建 WebSocket 协议、Kafka 异步解耦、分布式精准推送 — 这个项目是我对后端工程能力的系统训练。支持单聊、群组、朋友圈、红包，跑在 Docker 上一键部署。它让我真正理解了微服务拆分、消息可靠性和容器化运维。</p>
+          </article>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 张严鑫. All rights reserved.</p>
+  </footer>
+</body>
+</html>

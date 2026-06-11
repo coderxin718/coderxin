@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>植物表型智能分析平台 — 张严鑫</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">张严鑫</a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于我</a></li>
+        <li><a href="projects.html" class="active">项目</a></li>
+        <li><a href="contact.html">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <article class="project-detail">
+      <div class="page-header">
+        <a href="projects.html" class="back-link">&larr; 返回项目列表</a>
+        <span class="detail-category">计算机视觉 · 全栈</span>
+        <h2>植物表型智能分析平台</h2>
+        <p>面向育种与田间监测的多模态作物表型数据平台，支持RGB、高光谱、LiDAR、热红外四模态数据接入与一站式在线分析。</p>
+      </div>
+
+      <section class="content-section">
+        <h3>项目背景</h3>
+        <p>在数字农业与精准育种领域，作物表型的高通量获取是核心瓶颈之一。传统的人工测量方式效率低下、主观性强，难以满足大规模育种筛选的需求。本平台打通了从田间多模态数据采集到云端在线分析的完整链路，为高通量表型分析提供了高效的工具支撑。</p>
+
+        <h3>系统架构</h3>
+        <div class="arch-layers">
+          <div class="arch-layer"><strong>桌面采集端</strong> — C# WPF，通过 Socket.IO 与后端通信，支持 CSV/Excel 采集清单批量上传</div>
+          <div class="arch-layer"><strong>Web 后端</strong> — Python Flask + Flask-SocketIO + SQLAlchemy ORM + Celery/RabbitMQ（异步）</div>
+          <div class="arch-layer"><strong>前端</strong> — Vue 3 + TypeScript + Vite + Element Plus + Pinia，ECharts / Three.js / Fabric.js 可视化</div>
+          <div class="arch-layer"><strong>数据库</strong> — MySQL，采用 Project-Task-Plot-Sensor 四级分层数据模型</div>
+        </div>
+
+        <h3>四模态数据处理能力</h3>
+
+        <h4>1. RGB 可见光图像</h4>
+        <p>基于 YOLOv8 构建植株检测、计数与覆盖度计算流程，封装标准化推理接口。引入 DINO-SAM 实现叶片与冠层图像分割，替代人工标注，表型参数提取效率提升 30%。基于 HSV 色彩空间自动提取植被覆盖度（FVC），前端通过 Fabric.js 提供图像标注能力。</p>
+
+        <h4>2. 高光谱成像（HSI）— 核心模块</h4>
+        <p>支持完整处理流水线：亮度校正（去除暗电流和高亮过曝）→ 反射率校正（3%/30% 标准反射板两点线性校正 + 光谱插值）→ <strong>30+ 种植被指数</strong>在线计算（NDVI、GNDVI、SAVI、EVI、ARVI、PRI、MCARI、WBI 等）→ PLS-R 模型预测 SPAD、氮含量、钙含量、碳含量等生理生化指标，逐像素预测并生成伪彩分布图。支持光谱曲线点击查看（~300 波段连续反射率）和任务级批量自动处理。</p>
+
+        <h4>3. LiDAR 点云</h4>
+        <p>基于 Open3D 实现点云裁剪、体素下采样、DBSCAN 聚类去噪、百分位数法株高计算、冠幅宽度计算和逐厘米切层面积分析。前端使用 Three.js 实现点云的 3D 交互式渲染。集成 ISBNet 完成 3D 点云实例分割，自动解析株高、冠层结构、叶面积估算等三维表型参数。</p>
+
+        <h4>4. 热红外成像</h4>
+        <p>集成 ThermoGroupSDK（红外热像仪 SDK），通过 ctypes 调用 C++ 动态库。支持 .ddt 原始温度数据和 .bmp 伪彩图的上传与解析，提供单点测温和矩形区域测温，返回区域内最高/最低/平均温度，支持跨平台（Windows .dll / Linux .so）。</p>
+
+        <h4>5. 轻量化病害识别</h4>
+        <p>自主训练 CBAM-MobileNext 病害识别模型，在实验数据集上准确率达 91.28%，显著压缩参数量与计算开销，完成边缘农机设备适配。集成至平台实现叶片图像上传即得病害判定与防治建议。</p>
+
+        <h3>数据层级模型</h3>
+        <p>采用 User → Project → Task → Plot → SensorData（含 RGB/HSI/LiDAR/Thermal/Param/Slice）五级层次化数据组织方式，Mapping 表实现地块在多任务中的复用，贴合农业田间试验的实际场景。</p>
+
+        <div class="tech-stack">
+          <h3>技术栈</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">SpringBoot</span>
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">Vue 3</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">RabbitMQ</span>
+            <span class="skill-tag">YOLOv8</span>
+            <span class="skill-tag">DINO-SAM</span>
+            <span class="skill-tag">Open3D</span>
+            <span class="skill-tag">ISBNet</span>
+            <span class="skill-tag">CBAM-MobileNext</span>
+            <span class="skill-tag">Three.js</span>
+            <span class="skill-tag">ECharts</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 张严鑫. All rights reserved.</p>
+  </footer>
+</body>
+</html>

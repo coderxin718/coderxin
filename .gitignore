@@ -1,0 +1,17 @@
+# System files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (if you add build tools later)
+node_modules/
+
+# OS
+*.tmp
+~$*.docx
