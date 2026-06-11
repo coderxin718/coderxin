@@ -3,21 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="张严鑫的项目经历 — 云农智能体、植物表型分析平台、千言 InfiniteChat。">
   <title>项目 — 张严鑫</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">张严鑫</a>
-      <ul class="nav-links">
-        <li><a href="index.html">首页</a></li>
-        <li><a href="about.html">关于我</a></li>
-        <li><a href="projects.html" class="active">项目</a></li>
-        <li><a href="contact.html">联系</a></li>
-      </ul>
-    </div>
-  </nav>
+  <nav id="navbar" data-active="projects"></nav>
 
   <main>
     <div class="page-header">
@@ -28,7 +23,7 @@
     <section class="content-section">
       <div class="project-grid">
 
-        <a href="project-cloud-agri.html" class="project-link">
+        <a href="projects/cloud-agri.html" class="project-link">
           <article class="project-card">
             <div class="project-thumb">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -41,7 +36,7 @@
           </article>
         </a>
 
-        <a href="project-phenotype.html" class="project-link">
+        <a href="projects/phenotype.html" class="project-link">
           <article class="project-card">
             <div class="project-thumb">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -54,7 +49,7 @@
           </article>
         </a>
 
-        <a href="project-im.html" class="project-link">
+        <a href="projects/infinite-chat.html" class="project-link">
           <article class="project-card">
             <div class="project-thumb">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -74,5 +69,7 @@
   <footer>
     <p>&copy; 2026 张严鑫. All rights reserved.</p>
   </footer>
+
+  <script src="../assets/js/navbar.js"></script>
 </body>
 </html>

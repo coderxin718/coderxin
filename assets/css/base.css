@@ -1,0 +1,57 @@
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Design Tokens ===== */
+:root {
+  --cream: #fdfbf7;
+  --cream-dark: #f5f0ea;
+  --surface: #ede4da;
+  --surface-hover: #e3d8cc;
+  --accent: #c67b5c;
+  --accent-hover: #b56547;
+  --accent-light: #d4845f;
+  --text-primary: #2d221c;
+  --text-secondary: #8c7e6e;
+  --text-muted: #b0a395;
+  --border: #e6ddd2;
+  --radius: 8px;
+  --transition: 0.2s ease;
+}
+
+/* ===== Document Base ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
+  background-color: var(--cream);
+  color: var(--text-primary);
+  line-height: 1.8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent long strings from breaking layout */
+h1, h2, h3, h4, p, a,
+.contact-info, .timeline-content, .project-card {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}

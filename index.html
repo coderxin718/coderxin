@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="张严鑫 — AI 应用开发工程师，专注大模型工程化落地与 Agent 编排。">
+  <meta property="og:title" content="张严鑫 — AI 应用开发工程师">
+  <meta property="og:description" content="专注大模型工程化落地、Agent 编排与计算机视觉的 AI 应用开发工程师。">
+  <meta property="og:type" content="website">
   <title>张严鑫 — AI 应用开发工程师</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">张严鑫</a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">首页</a></li>
-        <li><a href="about.html">关于我</a></li>
-        <li><a href="projects.html">项目</a></li>
-        <li><a href="contact.html">联系</a></li>
-      </ul>
-    </div>
-  </nav>
+  <nav id="navbar" data-active="home"></nav>
 
   <main>
+    <!-- ====== Hero ====== -->
     <section class="hero">
       <div class="hero-content">
         <h1>你好，我是 <span class="highlight">张严鑫</span></h1>
@@ -29,8 +28,8 @@
           工程化为可交付、可维护、可追溯的垂直领域应用 — 从知识库到推理链，从算法模型到线上服务。
         </p>
         <div class="cta-buttons">
-          <a href="projects.html" class="btn btn-primary">看看我做了什么</a>
-          <a href="contact.html" class="btn btn-outline">聊聊合作</a>
+          <a href="pages/projects.html" class="btn btn-primary">看看我做了什么</a>
+          <a href="pages/contact.html" class="btn btn-outline">聊聊合作</a>
         </div>
       </div>
       <div class="hero-photo">
@@ -41,10 +40,121 @@
         </div>
       </div>
     </section>
+
+    <!-- ====== About ====== -->
+    <section class="about-section">
+      <div class="bio">
+        <p>我写 Java 后端，也折腾大模型。对我来说，最有趣的事情不是调通一个 API，而是让一个 Agent 自己决定"下一步该调哪个工具" — 并且结果真的可信、可追溯。</p>
+        <p>在托普云农实习期间，我从零搭建了一个面向农业场景的智能问答系统：从文档切分策略到向量检索，从 ReAct Agent 编排到 SSE 流式输出，从幻觉控制的四道防线到 MCP 动态工具扩展。那种把一整套 AI 链路跑通的感觉，让我确信这就是我想深耕的方向。</p>
+        <p>我关注接口的稳定性、系统的可观测性和回答的可追溯性。在垂直领域把 AI 真正落地，而不是停留在 Demo — 这大概就是我的工作哲学。</p>
+      </div>
+
+      <div class="about-grid">
+        <div>
+          <h3>专业技能</h3>
+          <div class="skill-categories">
+
+            <div class="skill-cat">
+              <h4>Java 后端 & AI 服务</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">SpringBoot</span>
+                <span class="skill-tag">RESTful API</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">Redis</span>
+                <span class="skill-tag">RabbitMQ</span>
+              </div>
+            </div>
+
+            <div class="skill-cat">
+              <h4>大模型应用 & Agent</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">SpringAI</span>
+                <span class="skill-tag">LangChain4j</span>
+                <span class="skill-tag">ReAct Agent</span>
+                <span class="skill-tag">Function Calling</span>
+                <span class="skill-tag">SSE 流式</span>
+              </div>
+            </div>
+
+            <div class="skill-cat">
+              <h4>向量检索 & 知识库</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Milvus</span>
+                <span class="skill-tag">pgvector</span>
+                <span class="skill-tag">Embedding</span>
+                <span class="skill-tag">RAG</span>
+                <span class="skill-tag">混合检索</span>
+              </div>
+            </div>
+
+            <div class="skill-cat">
+              <h4>计算机视觉</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">YOLOv8</span>
+                <span class="skill-tag">DINO-SAM</span>
+                <span class="skill-tag">OpenCV</span>
+                <span class="skill-tag">ISBNet</span>
+                <span class="skill-tag">模型部署</span>
+              </div>
+            </div>
+
+            <div class="skill-cat">
+              <h4>前端 & 部署</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Vue3 / Vite</span>
+                <span class="skill-tag">ECharts</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Linux</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div>
+          <h3>经历</h3>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">实习</span>
+                <h4>浙江托普云农科技股份有限公司</h4>
+                <p class="timeline-org">AI 应用开发实习生</p>
+                <p>实习期间承担了两个方向的核心开发：一是植物表型分析平台的后端服务，支持 RGB、高光谱、LiDAR 等多模态数据接入与分析管线；二是从零主导了农业智能问答系统 — 基于 SpringAI 搭建 RAG 知识库与 ReAct Agent 编排，参与农业数据分层建模与知识库建设，让用户拍一张叶片照片就能获得带来源引用的诊断报告。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2023.09 – 2026.06</span>
+                <h4>上海第二工业大学</h4>
+                <p class="timeline-org">硕士 · 计算机相关专业</p>
+                <p>研究生阶段深入学习 AI 应用开发，聚焦大模型工程化落地、Agent 编排与计算机视觉方向。期间在托普云农完成实习，将学术研究与产业需求紧密结合。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2019.09 – 2023.06</span>
+                <h4>河南科技大学</h4>
+                <p class="timeline-org">学士 · 计算机科学与技术</p>
+                <p>系统学习了数据结构、操作系统、计算机网络等核心课程，打下扎实的计算机基础。在校期间开始接触 SpringBoot 和 Python 生态，对后端工程和 AI 产生浓厚兴趣。</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p>&copy; 2026 张严鑫. All rights reserved.</p>
   </footer>
+
+  <script src="assets/js/navbar.js"></script>
 </body>
 </html>
